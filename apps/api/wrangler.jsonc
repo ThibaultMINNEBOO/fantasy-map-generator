@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fantasy-map-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-29",
+  // Fonts are bundled as binary modules for the PNG renderer (resvg has no system fonts).
+  "rules": [{ "type": "Data", "globs": ["**/*.ttf"], "fallthrough": true }],
+  "observability": { "enabled": true },
+  "vars": {
+    // Maximum number of cells a request may ask for (CPU guard).
+    "MAX_CELLS": "20000"
+  }
+  // Rendering a PNG takes ~100-500 ms of CPU: this needs the Workers Paid plan
+  // (the Free plan is limited to 10 ms of CPU per request). You can raise the limit with:
+  // "limits": { "cpu_ms": 30000 }
+  // Optional secret: API_KEY (npx wrangler secret put API_KEY) to require a Bearer token.
+}

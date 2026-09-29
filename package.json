@@ -1,0 +1,12 @@
+{
+  "name": "fantasymapgenerator",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w api",
+    "test": "npm test -w api",
+    "typecheck": "npm run typecheck -w api"
+  }
+}
